@@ -4,6 +4,20 @@ PDF CHAT BOT with a local llm
 
 this it just a test using [wafflecomposite/langchain-ask-pdf-local](https://github.com/wafflecomposite/langchain-ask-pdf-local) but with [oobabooga/text-generation-webui](https://github.com/oobabooga/text-generation-webui) api, all run locally
 
+# after some testing
+
+manage to get better result using a smaller text chunk (main.py line 47) 
+```
+# Split the text into chunks
+        text_splitter = CharacterTextSplitter(
+            separator="\n", chunk_size=500, chunk_overlap=250, length_function=len
+        )
+```
+if answer are incomplete then edit max new token to a bigger value (class.py line 17) and ask again
+```
+'max_new_tokens': 500,
+```
+
 # to install
 
 uses miniconda env installer from oobabooga, no need to install conda
